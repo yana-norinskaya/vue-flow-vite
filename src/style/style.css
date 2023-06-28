@@ -1,0 +1,37 @@
+@import "https://cdn.jsdelivr.net/npm/@vue-flow/core@1.20.2/dist/style.css";
+@import "https://cdn.jsdelivr.net/npm/@vue-flow/core@1.20.2/dist/theme-default.css";
+@import "https://cdn.jsdelivr.net/npm/@vue-flow/controls@latest/dist/style.css";
+@import "https://cdn.jsdelivr.net/npm/@vue-flow/minimap@latest/dist/style.css";
+@import "https://cdn.jsdelivr.net/npm/@vue-flow/node-resizer@latest/dist/style.css";
+
+:root {
+  --primary-color: #4294ff;
+  --secondary-color: #d373c0;
+  --secondary-light-color: #fbf2fa;
+  --background-color: #f4f9ff;
+  --text-color: #2b2d33;
+  --border-primary-color: #dedfdf;
+  --border-secondary-color: #808185;
+  --error-color: #dc3545;
+}
+html,
+body,
+#app {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+}
+
+#app {
+  color: var(--text-color);
+}
+button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
