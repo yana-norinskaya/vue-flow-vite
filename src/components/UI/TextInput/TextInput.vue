@@ -1,16 +1,3 @@
-<template>
-	<input
-		v-model="value"
-		type="text"
-		:class="[$style.input, error ? $style.error : '']"
-		@input="handleInput"
-	>
-	<span
-		v-if="error"
-		class="error-message"
-	>{{ error }}</span>
-</template>
-  
 <script setup lang="ts">
 import { ref } from "vue";
 import { useCssModule } from "vue";
@@ -32,13 +19,23 @@ const props: TextInputProps = defineProps({
 });
 const propsValue = ref(props.modelValue);
 const emit = defineEmits(["update:modelValue"]);
-const value = ref(props.modelValue);
 const handleInput = (event: Event) => {
 	propsValue.value = (event.target as HTMLInputElement).value;
-	emit("update:modelValue", value.value);
+	emit("update:modelValue", propsValue.value);
 };
 </script>
-  
+<template>
+	<input
+		v-model="propsValue"
+		type="text"
+		:class="[$style.input, error ? $style.error : '']"
+		@input="handleInput"
+	>
+	<span
+		v-if="error"
+		class="error-message"
+	>{{ error }}</span>
+</template>
   <style module lang="scss">
   .input {
     width: 100%;

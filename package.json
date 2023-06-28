@@ -10,6 +10,9 @@
 		"lint:script": "eslint --ext .ts,vue --ignore-path .gitignore ."
 	},
 	"dependencies": {
+		"@vue-flow/background": "^1.2.0",
+		"@vue-flow/controls": "^1.1.0",
+		"@vue-flow/core": "^1.20.2",
 		"sass": "^1.63.6",
 		"vue": "^3.2.47"
 	},

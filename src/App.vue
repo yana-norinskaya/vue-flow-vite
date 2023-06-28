@@ -1,15 +1,10 @@
 <script setup lang="ts">
-import TextInput from "@/components/UI/TextInput/TextInput.vue";
-import { ref } from "vue";
-const title = ref("");
-function setValue(val: string) {
-	title.value = val;
-}
+import ContainerFlow from "@/components/ContainerFlow/ContainerFlow.vue";
+import VueFlow from "@/components/VueFlow/VueFlow.vue";
 </script>
 <template>
-	<span>{{ title }}</span>
-	<TextInput
-		:model-value="title"
-		@update:model-value="setValue"
-	/>
+	<container-flow>
+		<nav>Navigation</nav>
+		<vue-flow />
+	</container-flow>
 </template>
