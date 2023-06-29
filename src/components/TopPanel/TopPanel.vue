@@ -3,8 +3,6 @@ import PublishButton from "../UI/PublishButton/PublishButton.vue";
 import ContentFrame from "../UI/ContentFrame/ContentFrame.vue";
 import IconPlus from "../UI/Icons/IconPlus.vue";
 import ToggleActionButtons from "../ToggleActionButtons/ToggleActionButtons.vue";
-import { useCssModule } from "vue";
-const $style = useCssModule();
 
 </script>
 <template>
@@ -14,7 +12,7 @@ const $style = useCssModule();
 		<toggle-action-buttons />
 	</div>
 </template>
-<style module lang="scss">
+<style module scoped>
 .top_panel{
   width: 100%;
   z-index: 1001;
@@ -24,7 +22,5 @@ const $style = useCssModule();
   display: flex;
   align-items: center;
   gap: 10px;
-
-
 }
 </style>

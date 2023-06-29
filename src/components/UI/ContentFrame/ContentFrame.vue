@@ -4,13 +4,7 @@
 	</div>
 </template>
 
-<script setup lang="ts">
-import { useCssModule } from "vue";
-const $style = useCssModule();
-
-</script>
-
-<style module>
+<style module scoped>
 .frame {
 	display: flex;
   align-items: center;

@@ -1,30 +1,35 @@
 <script setup lang="ts">
+import { computed } from "vue";
 
 interface IIconPlusProps{
 	fill?: string,
-	width?: string,
-	height?: string,
+	width?: number,
+	height?: number,
 }
+
 const props: IIconPlusProps = defineProps({
 	fill: {
 		type: String,
 		default: "var(--text-color)"
 	},
 	width: {
-		type: String,
-		default: "30px"
+		type: Number,
+		default: 30
 	},
 	height: {
-		type: String,
-		default: "30px"
+		type: Number,
+		default: 30
 	}
 });
+
+const pixelWidth = computed(() => props.width + "px");
+const pixelHeight = computed(() => props.height + "px");
 
 </script>
 <template>
 	<svg
-		:width="props.width"
-		:height="props.height"
+		:width="pixelWidth"
+		:height="pixelHeight"
 		viewBox="0 0 24 24"
 		fill="none"
 		xmlns="http://www.w3.org/2000/svg"

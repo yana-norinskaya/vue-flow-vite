@@ -1,9 +1,10 @@
 <script setup lang="ts">
+import { computed } from "vue";
 
 interface IIconPlusProps{
 	fill?: string,
-	width?: string,
-	height?: string,
+	width?: number,
+	height?: number,
 	isReverse?: boolean
 }
 const props: IIconPlusProps = defineProps({
@@ -12,12 +13,12 @@ const props: IIconPlusProps = defineProps({
 		default: "var(--text-color)"
 	},
 	width: {
-		type: String,
-		default: "30px"
+		type: Number,
+		default: 30
 	},
 	height: {
-		type: String,
-		default: "30px"
+		type: Number,
+		default: 30
 	},
 	isReverse: {
 		type: Boolean,
@@ -25,17 +26,20 @@ const props: IIconPlusProps = defineProps({
 	}
 });
 
+const pixelWidth = computed(() => props.width + "px");
+const pixelHeight = computed(() => props.height + "px");
+
 </script>
 <template>
 	<svg
 		id="Layer_1"
 		:fill="props.fill"
 		:class="{ 'reverse_icon': props.isReverse }"
+		:width="pixelWidth"
+		:height="pixelHeight"
 		version="1.1"
 		xmlns="http://www.w3.org/2000/svg"
 		xmlns:xlink="http://www.w3.org/1999/xlink"
-		:width="props.width"
-		:height="props.height"
 		viewBox="0 0 100 100"
 		enable-background="new 0 0 100 100"
 		xml:space="preserve"

@@ -3,8 +3,9 @@ import { VueFlow  } from "@vue-flow/core";
 import { Background, BackgroundVariant } from "@vue-flow/background";
 import { Controls } from "@vue-flow/controls";
 import TopPanel from "@/components/TopPanel/TopPanel.vue";
-import { useCssModule } from "vue";
-const $style = useCssModule();
+import { computed } from "vue";
+
+const styleBackground = computed(() => ({background: "var(--background-color)"}));
 
 </script>
 
@@ -15,19 +16,18 @@ const $style = useCssModule();
 		<Background
 			:variant="BackgroundVariant.Lines"
 			:gap="100"
-			style="background: #f4f9ff"
-			pattern-color="#dedfdf"
+			:style="styleBackground"
+			pattern-color="var(--border-primary-color)"
 		/>
 	</VueFlow>
 </template>
 
-<style module>
+<style module scoped>
 .controls {
   display: flex;
   gap: 5px;
   padding: 10px;
   background: white;
-
 }
 .vue_flow {
   height: 100vh;

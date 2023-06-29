@@ -3,21 +3,19 @@
 		:class="$style.button"
 		@click="handleClick"
 	>
-		<slot />
+		<slot></slot>
 	</button>
 </template>
 
 <script setup lang="ts">
-import { useCssModule } from "vue";
-const $style = useCssModule();
 
-
+const emit = defineEmits(["click"]);
 const handleClick = () => {
-	console.log("Click");
+	emit("click");
 };
 </script>
 
-<style module>
+<style module scoped lang="scss">
 .button {
 	background: var(--border-primary-color);
 	padding: 0 10px;
@@ -27,5 +25,10 @@ const handleClick = () => {
 	height: var(--height-element-top-panel);
 	font-size: 19px;
 	font-weight: bold;
+	transition: all 0.3s ease-in-out;
+	&:hover{
+		background-color: var(--border-secondary-color);
+	}
+
 }
 </style>
