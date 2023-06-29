@@ -7,8 +7,7 @@ const $style = useCssModule();
 
 <template>
 	<div :class="$style.container">
-		<slot />
-		<slot />
+		<slot></slot>
 	</div>
 </template>
 

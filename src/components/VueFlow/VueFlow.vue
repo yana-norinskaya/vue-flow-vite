@@ -2,6 +2,7 @@
 import { VueFlow  } from "@vue-flow/core";
 import { Background, BackgroundVariant } from "@vue-flow/background";
 import { Controls } from "@vue-flow/controls";
+import TopPanel from "@/components/TopPanel/TopPanel.vue";
 import { useCssModule } from "vue";
 const $style = useCssModule();
 
@@ -9,6 +10,7 @@ const $style = useCssModule();
 
 <template>
 	<VueFlow :class="$style.vue_flow">
+		<top-panel />
 		<Controls :class="$style.controls" />
 		<Background
 			:variant="BackgroundVariant.Lines"
