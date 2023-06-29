@@ -3,15 +3,23 @@ import { VueFlow  } from "@vue-flow/core";
 import { Background, BackgroundVariant } from "@vue-flow/background";
 import { Controls } from "@vue-flow/controls";
 import TopPanel from "@/components/TopPanel/TopPanel.vue";
+import SidePanel from "@/components/SidePanel/SidePanel.vue";
+import {useToggleVisibleSidePanel} from "@/hooks/useToggleVisibleSidePanel.ts";
 import { computed } from "vue";
 
+
 const styleBackground = computed(() => ({background: "var(--background-color)"}));
+const {isVisibleSidePanel, toggleVisibleSidePanel} = useToggleVisibleSidePanel();
 
 </script>
 
 <template>
 	<VueFlow :class="$style.vue_flow">
-		<top-panel />
+		<top-panel @toggle-visible-side-panel="toggleVisibleSidePanel" />
+		<side-panel
+			v-if="isVisibleSidePanel"
+			@toggle-visible-side-panel="toggleVisibleSidePanel"
+		/>
 		<Controls :class="$style.controls" />
 		<Background
 			:variant="BackgroundVariant.Lines"

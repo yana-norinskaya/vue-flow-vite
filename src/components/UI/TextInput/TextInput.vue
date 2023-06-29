@@ -3,6 +3,7 @@ import { computed, ref, useCssModule } from "vue";
 const $style = useCssModule();
 
 interface TextInputProps {
+	placeholder: string;
 	modelValue: string;
 	error?: string;
 }
@@ -25,6 +26,7 @@ const inputClasses  = computed(() => {
 <template>
 	<input
 		v-model="internalValue"
+		:placeholder="props.placeholder"
 		type="text"
 		:class="inputClasses"
 		@input="handleInput"
