@@ -7,7 +7,7 @@ interface ICustomNodeActionProps extends NodeProps{
 	offsetX?: number,
 	offsetY?: number
 }
-const { addNodes } = useVueFlow();
+const { addNodes, addEdges, getEdges } = useVueFlow();
 
 const props = defineProps<ICustomNodeActionProps>();
 
@@ -21,15 +21,37 @@ onMounted(() => {
 	updateInternals();
 });
 
-function addNewActionNode() {
-	const newNode = {
-		id: Date.now().toString(),
-		type: "action",
-		label: "Название команды",
-		data: { comment: "Создать задачу" },
-		position: { x: props.offsetX ?? 400, y: props.offsetY ?? 400 },
-	};
-	addNodes(newNode);
+function addNewActionNode(source: string, sourceHandle: string) {
+	if(getEdges.value.every(edge => edge.sourceHandle !== sourceHandle)){
+		const newNode = {
+			id: Date.now().toString(),
+			type: "action",
+			label: "Название команды",
+			data: { comment: "Создать задачу" },
+			position: { x: props.offsetX ?? 400, y: props.offsetY ?? 400 },
+		};
+
+		const newEdge = {
+			id: `handle_${Date.now()}`,
+			sourceHandle: sourceHandle,
+			source: source,
+			target: Date.now().toString(),
+			animated: true,
+			markerEnd: {
+				type: "arrow",
+				color: "#d373c0",
+				width: 10,
+				height: 10,
+			},
+			style: () => ({
+				stroke: "#d373c0",
+				strokeWidth: 5,
+			}),
+
+		};
+		addNodes(newNode);
+		addEdges(newEdge);
+	}
 }
 </script>
 
@@ -39,7 +61,7 @@ function addNewActionNode() {
 		:key="action.id"
 		bg-color="var(--secondary-light-color)"
 		border-color="var(--secondary-color)"
-		@click="addNewActionNode"
+		@click="addNewActionNode(props.id, action.id)"
 	>
 		{{ action.name }}
 		<handle

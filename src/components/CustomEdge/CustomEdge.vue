@@ -1,11 +1,7 @@
 <script setup lang="ts">
-import { onMounted } from "vue";
 import { EdgeProps } from "@vue-flow/core";
 
 const props = defineProps<EdgeProps>();
-onMounted(() => {
-	console.log(props);
-});
 </script>
 
 <template>

@@ -5,14 +5,14 @@ import { Controls } from "@vue-flow/controls";
 import TopPanel from "@/components/TopPanel/TopPanel.vue";
 import SidePanel from "@/components/SidePanel/SidePanel.vue";
 import {useToggle} from "@/hooks/useToggle.ts";
-import { computed, ref } from "vue";
-import{ initialNodes,} from "./initialNodes.ts";
+import { computed, onMounted, ref } from "vue";
+import{ initialNodes, initialConnections} from "./initialNodes.ts";
 import CustomNode from "../CustomNode/CustomNode.vue";
 import CustomEdge from "../CustomEdge/CustomEdge.vue";
 import CustomNodeAction from "@/components/CustomNodeAction/CustomNodeAction.vue";
 import ActionNode from "@/components/ActionNode/ActionNode.vue";
 
-useVueFlow({
+const { addEdges } = useVueFlow({
 	nodes: initialNodes,
 	id: "options-api",
 });
@@ -28,6 +28,10 @@ function onPaneClick(event: MouseEvent ) {
 	currentOffsetX.value = offsetX;
 	currentOffsetY.value = offsetY;
 }
+
+onMounted(() => {
+	addEdges(initialConnections);
+});
 </script>
 
 <template>

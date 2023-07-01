@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { NodeProps, defineProps, defineEmits } from "@vue-flow/core";
+import { NodeProps } from "@vue-flow/core";
 import ContentFrame from "../UI/ContentFrame/ContentFrame.vue";
 import ContainerNode from "../UI/ContainerNode/ContainerNode.vue";
 import IconLogo from "../UI/Icons/IconLogo.vue";
