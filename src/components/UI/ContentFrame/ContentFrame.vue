@@ -1,3 +1,23 @@
+<script setup lang="ts">
+import { computed } from "vue";
+
+interface IContentFrameProps{
+	direction?: "row" | "column",
+	borderColor?: string,
+	bgColor?: string,
+	gap?: string
+}
+
+const props = defineProps<IContentFrameProps>();
+
+const frameStyle = computed(() => ({
+	"flex-direction": props.direction ?? "row",
+	"border": `2px solid ${props.borderColor ?? "var(--border-primary-color)"}`,
+	"background": props.bgColor ?? "white",
+	"gap": props.gap ?? ""
+}));
+</script>
+
 <template>
 	<div
 		:class="$style.frame"
@@ -6,29 +26,14 @@
 		<slot></slot>
 	</div>
 </template>
-<script setup lang="ts">
-import { computed } from "vue";
-
-interface IContentFrameProps{
-	direction?: "row" | "column"
-}
-
-const props = defineProps<IContentFrameProps>();
-const frameStyle = computed(() => ({
-	"flex-direction": props.direction ?? "row"
-
-}));
-
-</script>
 
 <style module scoped>
 .frame {
 	display: flex;
   align-items: center;
-  background: white;
 	padding: 10px;
-  border: 2px solid var(--border-primary-color);
   border-radius: 10px;
 	height: 100%;
+	position: relative;
 }
 </style>

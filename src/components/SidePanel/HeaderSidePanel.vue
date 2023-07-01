@@ -2,17 +2,16 @@
 import IconLogo from "../UI/Icons/IconLogo.vue";
 import IconClose from "../UI/Icons/IconClose.vue";
 
-const emit = defineEmits(["toggle-visible-side-panel"]);
+const emit = defineEmits(["show-panel"]);
 
-const toggleVisibleSidePanel = () => {
-	emit("toggle-visible-side-panel");
+const showPanel = () => {
+	emit("show-panel");
 };
-
 </script>
 
 <template>
 	<div :class="$style.header">
-		<icon-logo fill="var(--primary-color)" />
+		<icon-logo />
 		<div :class="$style.header_wrap_title">
 			<h3 :class="$style.header_title">
 				Новая команда
@@ -21,11 +20,11 @@ const toggleVisibleSidePanel = () => {
 				ID 12345678
 			</p>
 		</div>
-		<icon-close @click="toggleVisibleSidePanel" />
+		<icon-close @click="showPanel" />
 	</div>
 </template>
-<style module scoped lang="scss">
 
+<style module scoped lang="scss">
   .header {
     display: flex;
     align-items: center;
@@ -33,21 +32,19 @@ const toggleVisibleSidePanel = () => {
     width: 100%;
     padding: 0 10px;
 		padding-bottom: 10px;
-		.header_wrap_title{
+		&_wrap_title{
 			display: flex;
 			flex-direction: column;
 			width: 100%;
 			border-right: 2px solid var(--border-primary-color);
 			gap: 3px;
 		}
-    .header_title {
+    &_title {
       font-size: 16px;
     }
-		.header_id{
+		&_id{
 			font-size: 12px;
 			color: var(--border-secondary-color);
 		}
   }
-
-
 </style>

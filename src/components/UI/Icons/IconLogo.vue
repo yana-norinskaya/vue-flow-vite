@@ -3,21 +3,21 @@ import { computed } from "vue";
 
 interface IIconPlusProps{
 	fill?: string,
-	width?: number,
-	height?: number,
+	width?: string,
+	height?: string,
 }
 const props: IIconPlusProps = defineProps({
 	fill: {
 		type: String,
-		default: "var(--text-color)"
+		default: "var(--primary-color)"
 	},
 	width: {
-		type: Number,
-		default: 30
+		type: String,
+		default: "30"
 	},
 	height: {
-		type: Number,
-		default: 30
+		type: String,
+		default: "30"
 	},
 
 });

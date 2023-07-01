@@ -1,25 +1,26 @@
 <script setup lang="ts">
-import PublishButton from "../UI/PublishButton/PublishButton.vue";
+import CustomButton from "../UI/CustomButton/CustomButton.vue";
 import ContentFrame from "../UI/ContentFrame/ContentFrame.vue";
 import IconPlus from "../UI/Icons/IconPlus.vue";
 import ToggleActionButtons from "../ToggleActionButtons/ToggleActionButtons.vue";
 
-const emit = defineEmits(["toggle-visible-side-panel"]);
+const emit = defineEmits(["show-panel"]);
 
-const toggleVisibleSidePanel = () => {
-	emit("toggle-visible-side-panel");
+const showPanel = () => {
+	emit("show-panel");
 };
-
 </script>
+
 <template>
 	<div :class="$style.top_panel">
-		<publish-button>Опубликовать</publish-button>
-		<content-frame @click="toggleVisibleSidePanel">
+		<custom-button>Опубликовать</custom-button>
+		<content-frame @click="showPanel">
 			<icon-plus />
 		</content-frame>
 		<toggle-action-buttons />
 	</div>
 </template>
+
 <style module scoped>
 .top_panel{
   width: 100%;

@@ -14,7 +14,10 @@
   --border-secondary-color: #808185;
 	--text-color-secondary: #B5B5B8;
   --error-color: #dc3545;
+	--action-border-secondary: #FCA140;
+	--action-bg-secondary: #FFFAEC;
 	--height-element-top-panel: 50px;
+	--width-node: 250px;
 }
 html,
 body,

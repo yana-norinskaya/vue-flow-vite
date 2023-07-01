@@ -1,16 +1,17 @@
 <script setup lang="ts">
 import { computed, ref, useCssModule } from "vue";
-const $style = useCssModule();
 
-interface TextInputProps {
-	placeholder: string;
-	modelValue: string;
+interface ITextInputProps {
+	placeholder?: string;
+	modelValue?: string;
 	error?: string;
 }
 
-const props = defineProps<TextInputProps>();
+const $style = useCssModule();
+
+const props = defineProps<ITextInputProps>();
 const internalValue = ref(props.modelValue);
-const emit = defineEmits(["update:modelValue"]);
+const emit = defineEmits(["update:modelValue", "keyup" ]);
 
 const handleInput = (event: Event) => {
 	internalValue.value = (event.target as HTMLInputElement).value;
@@ -20,12 +21,11 @@ const handleInput = (event: Event) => {
 const inputClasses  = computed(() => {
 	return [ $style.input, props.error ? $style.error : "" ];
 });
-
 </script>
 
 <template>
 	<input
-		v-model="internalValue"
+		:value="props.modelValue"
 		:placeholder="props.placeholder"
 		type="text"
 		:class="inputClasses"
@@ -37,7 +37,7 @@ const inputClasses  = computed(() => {
 	>{{ error }}</span>
 </template>
 
-<style module scoped lang="scss">
+<style module scoped>
 .input {
   width: 100%;
   border-radius: 5px;
@@ -50,4 +50,4 @@ const inputClasses  = computed(() => {
 .error_message {
   color: red;
   }
-  </style>
+</style>

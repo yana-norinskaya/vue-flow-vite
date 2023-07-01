@@ -2,31 +2,52 @@
 import TextInput from "../UI/TextInput/TextInput.vue";
 import HeaderSidePanel from "./HeaderSidePanel.vue";
 import ContentFrame from "../UI/ContentFrame/ContentFrame.vue";
-import InputWithLabel from "../UI/InputWithLabel/InputWithLabel.vue";
+import InputLabel from "../UI/InputLabel/InputLabel.vue";
+import { useAddNode } from "@/hooks/useAddNode";
+import CustomButton from "../UI/CustomButton/CustomButton.vue";
 
-const emit = defineEmits(["toggle-visible-side-panel"]);
+const {handleSubmit, setLabel, label, setComment, comment} = useAddNode();
+const emit = defineEmits(["show-panel", "updateNodeInternals"]);
 
-const toggleVisibleSidePanel = () => {
-	emit("toggle-visible-side-panel");
+const showPanel = () => {
+	emit("show-panel");
 };
-
 </script>
 
 <template>
 	<aside :class="$style.aside">
-		<header-side-panel @toggle-visible-side-panel="toggleVisibleSidePanel" />
-		<content-frame direction="column">
-			<input-with-label
+		<header-side-panel @show-panel="showPanel" />
+		<content-frame
+			direction="column"
+			gap="20px"
+		>
+			<input-label
 				label="Название команды:"
-				symbol="Символов 15 из 128"
+				:symbol="label"
 			>
 				<TextInput
 					placeholder="Название этапа"
+					:model-value="label"
+					@update:model-value="setLabel"
 				/>
-			</input-with-label>
+			</input-label>
+			<input-label
+				label="Комментарий"
+				:symbol="comment"
+			>
+				<TextInput
+					placeholder="Коменатрий"
+					:model-value="comment"
+					@update:model-value="setComment"
+				/>
+			</input-label>
+			<custom-button @click="handleSubmit">
+				Создать
+			</custom-button>
 		</content-frame>
 	</aside>
 </template>
+
 <style module scoped lang="scss">
 .aside {
   position: absolute;
@@ -36,6 +57,7 @@ const toggleVisibleSidePanel = () => {
   width: 300px;
   height: fit-content;
   z-index: 10;
+	gap: 5px;
   border-radius: 10px;
   background-color: var( --background-color);
   border: 2px solid var(--border-primary-color);
