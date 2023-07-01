@@ -31,6 +31,11 @@ export function useAddNode(): AddNodeResult {
 			position: { x: 300, y: 300 },
 			data: {
 				comment: comment.value,
+				actions: [
+					{ id: `1_${Date.now()}`, name: "Кнопка1" },
+					{ id: `2_${Date.now()}`, name: "Кнопка2" },
+					{ id: `3_${Date.now()}`, name: "Кнопка3" },
+				],
 			},
 		};
 
