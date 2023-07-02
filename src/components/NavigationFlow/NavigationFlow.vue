@@ -2,6 +2,7 @@
 	<nav :class="$style.nav">
 	</nav>
 </template>
+
 <style module scoped>
 .nav {
   width: 80px;

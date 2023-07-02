@@ -1,3 +1,11 @@
+<script setup lang="ts">
+const emit = defineEmits(["click"]);
+
+const handleClick = () => {
+	emit("click");
+};
+</script>
+
 <template>
 	<button
 		:class="$style.button"
@@ -7,15 +15,7 @@
 	</button>
 </template>
 
-<script setup lang="ts">
-
-const emit = defineEmits(["click"]);
-const handleClick = () => {
-	emit("click");
-};
-</script>
-
-<style module scoped lang="scss">
+<style module scoped>
 .button {
 	background: var(--border-primary-color);
 	padding: 0 10px;
@@ -29,6 +29,5 @@ const handleClick = () => {
 	&:hover{
 		background-color: var(--border-secondary-color);
 	}
-
 }
 </style>

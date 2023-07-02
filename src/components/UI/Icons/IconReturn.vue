@@ -28,8 +28,8 @@ const props: IIconPlusProps = defineProps({
 
 const pixelWidth = computed(() => props.width + "px");
 const pixelHeight = computed(() => props.height + "px");
-
 </script>
+
 <template>
 	<svg
 		id="Layer_1"
@@ -55,6 +55,7 @@ const pixelHeight = computed(() => props.height + "px");
 		</g>
 	</svg>
 </template>
+
 <style scoped>
 .reverse_icon{
 	transform: scaleX(-1);
