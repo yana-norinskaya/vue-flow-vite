@@ -6,6 +6,7 @@ interface IIconPlusProps{
 	width?: string,
 	height?: string,
 }
+
 const props: IIconPlusProps = defineProps({
 	fill: {
 		type: String,
@@ -19,13 +20,12 @@ const props: IIconPlusProps = defineProps({
 		type: String,
 		default: "30"
 	},
-
 });
 
 const pixelWidth = computed(() => props.width + "px");
 const pixelHeight = computed(() => props.height + "px");
-
 </script>
+
 <template>
 	<svg
 		:width="pixelWidth"

@@ -25,7 +25,7 @@ const showPanel = () => {
 				label="Название команды:"
 				:symbol="label"
 			>
-				<TextInput
+				<text-input
 					placeholder="Название этапа"
 					:model-value="label"
 					@update:model-value="setLabel"
@@ -35,7 +35,7 @@ const showPanel = () => {
 				label="Комментарий"
 				:symbol="comment"
 			>
-				<TextInput
+				<text-input
 					placeholder="Коменатрий"
 					:model-value="comment"
 					@update:model-value="setComment"

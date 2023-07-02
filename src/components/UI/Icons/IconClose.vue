@@ -24,8 +24,8 @@ const props: IIconPlusProps = defineProps({
 
 const pixelWidth = computed(() => props.width + "px");
 const pixelHeight = computed(() => props.height + "px");
-
 </script>
+
 <template>
 	<svg
 		:width="pixelWidth"
@@ -47,6 +47,7 @@ const pixelHeight = computed(() => props.height + "px");
 		</g>
 	</svg>
 </template>
+
 <style scoped module lang="scss">
 .icon{
 	cursor: pointer;

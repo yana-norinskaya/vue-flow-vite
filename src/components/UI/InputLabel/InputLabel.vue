@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { computed } from "vue";
 
-
 interface IInputLabelProps{
 	label: string
 	symbol: string
 }
+
 const props = defineProps<IInputLabelProps>();
 const textSymbol = computed(() => {
 	return `Символов	${ props.symbol.length } из 128`;

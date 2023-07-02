@@ -19,8 +19,8 @@ const props: IIconPlusProps = defineProps({
 
 const pixelWidth = computed(() => props.width + "px");
 const pixelHeight = computed(() => props.height + "px");
-
 </script>
+
 <template>
 	<svg
 		:width="pixelWidth"

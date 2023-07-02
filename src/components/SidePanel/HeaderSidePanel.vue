@@ -25,26 +25,26 @@ const showPanel = () => {
 </template>
 
 <style module scoped lang="scss">
-  .header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    width: 100%;
-    padding: 0 10px;
-		padding-bottom: 10px;
-		&_wrap_title{
-			display: flex;
-			flex-direction: column;
-			width: 100%;
-			border-right: 2px solid var(--border-primary-color);
-			gap: 3px;
-		}
-    &_title {
-      font-size: 16px;
-    }
-		&_id{
-			font-size: 12px;
-			color: var(--border-secondary-color);
-		}
+.header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 0 10px;
+	padding-bottom: 10px;
+	&_wrap_title{
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		border-right: 2px solid var(--border-primary-color);
+		gap: 3px;
+	}
+  &_title {
+    font-size: 16px;
   }
+	&_id{
+		font-size: 12px;
+		color: var(--border-secondary-color);
+	}
+}
 </style>

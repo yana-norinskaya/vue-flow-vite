@@ -7,7 +7,7 @@ interface ICustomNodeActionProps extends NodeProps{
 	offsetX?: number,
 	offsetY?: number
 }
-const { addNodes, addEdges, getEdges } = useVueFlow();
+const { addNodes, addEdges, getEdges,findNode } = useVueFlow();
 
 const props = defineProps<ICustomNodeActionProps>();
 
@@ -21,20 +21,24 @@ onMounted(() => {
 	updateInternals();
 });
 
-function addNewActionNode(source: string, sourceHandle: string) {
+function addNewActionNode(idParent: string, sourceHandle: string) {
+	const positionParent = findNode(idParent)?.position;
+	const sizeParent = findNode(idParent)?.dimensions;
+	const posX = positionParent?.x && sizeParent?.width ? positionParent.x + (sizeParent?.width * 2) : 400;
+	const posY = positionParent?.y ? positionParent?.y : 400;
 	if(getEdges.value.every(edge => edge.sourceHandle !== sourceHandle)){
 		const newNode = {
 			id: Date.now().toString(),
 			type: "action",
-			label: "Название команды",
+			label: "Название действия",
 			data: { comment: "Создать задачу" },
-			position: { x: props.offsetX ?? 400, y: props.offsetY ?? 400 },
+			position: { x: posX, y: posY },
 		};
 
 		const newEdge = {
 			id: `handle_${Date.now()}`,
 			sourceHandle: sourceHandle,
-			source: source,
+			source: idParent,
 			target: Date.now().toString(),
 			animated: true,
 			markerEnd: {
@@ -73,4 +77,3 @@ function addNewActionNode(source: string, sourceHandle: string) {
 		/>
 	</content-frame>
 </template>
-

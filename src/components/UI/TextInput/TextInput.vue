@@ -46,8 +46,8 @@ const inputClasses  = computed(() => {
   }
 .error {
   border-color: red;
-  }
+}
 .error_message {
   color: red;
-  }
+}
 </style>
